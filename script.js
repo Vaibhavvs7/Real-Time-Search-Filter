@@ -35,3 +35,45 @@ let users = [
     bio: "aesthetic overload 📸🕊️ | living in lowercase",
   },
 ];
+
+function showUsers(arr) {
+  arr.forEach(function (user) {
+    // Create card container
+    const card = document.createElement("div");
+    card.className = "card";
+
+    // Create image element
+    const img = document.createElement("img");
+    img.src = user.pic;
+    img.className = "bg-img";
+
+    // Create blurred layer
+    const blurredLayer = document.createElement("div");
+    blurredLayer.style.backgroundImage = `url(${user.pic})`;
+    blurredLayer.className = "blurred-layer";
+
+    // Create content container
+    const content = document.createElement("div");
+    content.className = "content";
+
+    // Create heading
+    const heading = document.createElement("h3");
+    heading.textContent = user.name;
+
+    // Create paragraph
+    const paragraph = document.createElement("p");
+    paragraph.textContent = user.bio;
+
+    // Append elements
+    content.appendChild(heading);
+    content.appendChild(paragraph);
+
+    card.appendChild(img);
+    card.appendChild(blurredLayer);
+    card.appendChild(content);
+
+    // Finally, append the card to the DOM (for example to body or a container)
+    document.querySelector('.cards').appendChild(card);
+  });
+}
+showUsers(users);
