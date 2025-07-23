@@ -76,4 +76,25 @@ function showUsers(arr) {
     document.querySelector('.cards').appendChild(card);
   });
 }
+
 showUsers(users);
+
+let inp = document.querySelector('.inp');
+inp.addEventListener("input", function(){
+    const query = inp.value.trim().toLowerCase(); // convert input to lowercase
+
+    let newUsers = users.filter((user) => {
+        return user.name.toLowerCase().startsWith(query); // compare with lowercase name
+    })
+
+    document.querySelector(".cards").innerHTML = "";
+    if (newUsers.length > 0) {
+    showUsers(newUsers);
+    } else {
+    // Show "User Not Found" message
+    const notFound = document.createElement("div");
+    notFound.className = "not-found";
+    notFound.textContent = "User Not Found";
+    document.querySelector('.cards').appendChild(notFound);
+  }
+})
